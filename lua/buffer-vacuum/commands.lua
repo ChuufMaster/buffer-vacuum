@@ -4,10 +4,9 @@ local util = require('buffer-vacuum.util')
 
 local M = {}
 function M.load()
-  print('commands')
   vim.api.nvim_create_augroup('BufferVacuum', { clear = true })
 
-  vim.api.nvim_create_autocmd('BufEnter', {
+  vim.api.nvim_create_autocmd({ 'bufenter' }, {
     pattern = '*',
     group = 'BufferVacuum',
     callback = function()

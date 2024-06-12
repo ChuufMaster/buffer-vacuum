@@ -3,7 +3,6 @@ local commands = require('buffer-vacuum.commands')
 
 local M = {}
 
-print('vacuum')
 -- Define the autocommand
 M.setup = config.setup
 
