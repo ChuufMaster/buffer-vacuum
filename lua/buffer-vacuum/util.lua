@@ -19,7 +19,7 @@ function M.pin_buffer(bufnr)
 end
 
 local function is_pinned(buffer)
-  if config.count.options.count_pinned_buffers then
+  if config.options.count_pinned_buffers then
     return 0
   end
   if buffer.variables.pinned ~= nil then
