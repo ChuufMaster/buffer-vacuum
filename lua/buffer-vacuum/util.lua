@@ -4,7 +4,17 @@ local config = require('buffer-vacuum.config')
 
 local M = {}
 
-M.pinned_buffers = {}
+function M.toggle_Buffer_Vacuum()
+  vim.g.Buffer_Vacuum_Enabled = not vim.g.Buffer_Vacuum_Enabled
+end
+
+function M.disable_Buffer_Vacuum()
+  vim.g.Buffer_Vacuum_Enabled = false
+end
+
+function M.enable_Buffer_Vacuum()
+  vim.g.Buffer_Vacuum_Enabled = true
+end
 
 -- Add a buffer to the pinned_buffers
 function M.pin_buffer(bufnr)
@@ -15,7 +25,13 @@ function M.pin_buffer(bufnr)
 
   buffer.pinned = 1 - buffer.pinned
 
-  print('pinned buffer ' .. bufnr .. ' toggled to')
+  if config.options.enable_messages then
+    if buffer.pinned == 1 then
+      print('pinned buffer ' .. bufnr)
+    else
+      print('unpinned buffer ' .. bufnr)
+    end
+  end
 end
 
 local function is_pinned(buffer)
@@ -31,6 +47,10 @@ end
 
 -- deletes the oldest buffer
 function M.delete_oldest_buffer()
+  if not vim.g.Buffer_Vacuum_Enabled then
+    return
+  end
+
   local current_buffer = vim.api.nvim_get_current_buf()
 
   -- Get all buffers
@@ -66,16 +86,19 @@ function M.delete_oldest_buffer()
 
   considered_buffers = considered_buffers + #file_buffers
 
-  vim.print(considered_buffers)
   if considered_buffers >= config.options.max_buffers then
     local oldest_bufnr = file_buffers[#file_buffers]
-    print(
-      'Deleting the oldest buffer:',
-      vim.api.nvim_buf_get_name(oldest_bufnr.bufnr)
-    )
+    if config.options.enable_messages then
+      print(
+        'Deleting the oldest buffer:',
+        vim.api.nvim_buf_get_name(oldest_bufnr.bufnr)
+      )
+    end
     vim.api.nvim_buf_delete(oldest_bufnr.bufnr, {})
-  else
-    -- print('No file buffers to delete.')
+  end
+
+  if considered_buffers >= config.options.max_buffers then
+    M.delete_oldest_buffer()
   end
 end
 

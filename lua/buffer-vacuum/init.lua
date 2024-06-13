@@ -8,4 +8,7 @@ M.setup = config.setup
 
 M.load = commands.load
 
+M.setup()
+M.load()
+
 return M

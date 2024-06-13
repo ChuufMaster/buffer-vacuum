@@ -1,9 +1,11 @@
+---@class Config
+
 local M = {}
 
----@class Config
 local defaults = {
   max_buffers = 6,
   count_pinned_buffers = false,
+  enable_messages = false,
 }
 
 ---@type Config
@@ -19,7 +21,5 @@ function M.extend(options)
   M.options =
     vim.tbl_deep_extend('force', {}, M.options or defaults, options or {})
 end
-
-M.setup()
 
 return M
