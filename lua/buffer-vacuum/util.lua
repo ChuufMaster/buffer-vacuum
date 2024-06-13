@@ -47,7 +47,7 @@ end
 
 -- deletes the oldest buffer
 function M.delete_oldest_buffer()
-  if not vim.g.Buffer_Vacuum_Enabled then
+  if vim.g.Buffer_Vacuum_Enabled == false then
     return
   end
 

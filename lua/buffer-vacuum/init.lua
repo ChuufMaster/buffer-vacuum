@@ -1,5 +1,6 @@
 local config = require('buffer-vacuum.config')
 local commands = require('buffer-vacuum.commands')
+local util = require('buffer-vacuum.util')
 
 local M = {}
 
