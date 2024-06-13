@@ -86,6 +86,10 @@ function M.delete_oldest_buffer()
 
   considered_buffers = considered_buffers + #file_buffers
 
+  if config.options.enable_messages then
+    vim.print('Buffer Vacuum: ' .. considered_buffers .. ' counted buffers')
+  end
+
   if considered_buffers >= config.options.max_buffers then
     local oldest_bufnr = file_buffers[#file_buffers]
     if config.options.enable_messages then
