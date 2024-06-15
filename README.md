@@ -20,7 +20,7 @@ Install the plugin with your preferred package manager:
 ```lua
 return {
   {
-    'ChuufMaster/buffer-vacuum.nvim'
+    'ChuufMaster/buffer-vacuum.nvim',
     opts = {}
   },
 }
