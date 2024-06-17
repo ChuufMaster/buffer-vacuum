@@ -1,15 +1,26 @@
-# 🧹 buffer-vacuum.nvim
+# 🧹 buffer-vacuum
 
 A neovim plugin to vacuum up unused file buffers
 
 ## ✨ Features
 
 - Delete your oldest unsaved/unpinned buffer
-- pin buffers to ignore them from the buffer cound
+- pin buffers to ignore them from the buffer count
 
 ## ⚡️ Requirements
 
 - Neovim >=0.10
+
+## TOC
+
+- [🧹 buffer-vacuum](<#-buffer-vacuum>)
+  - [✨ Features](<#-features>)
+  - [⚡️ Requirements](<#%EF%B8%8F-requirements>)
+  - [TOC](<#toc>)
+  - [📦 Installation](<#-installation>)
+  - [⚙️ Configuration](<#%EF%B8%8F-configuration>)
+  - [🚀 Usage](<#-usage>)
+  - [Plugins that work well with Buffer Vacuum](<#plugins-that-work-well-with-buffer-vacuum>)
 
 ## 📦 Installation
 
@@ -20,7 +31,7 @@ Install the plugin with your preferred package manager:
 ```lua
 return {
   {
-    'ChuufMaster/buffer-vacuum.nvim',
+    'ChuufMaster/buffer-vacuum',
     opts = {}
   },
 }
