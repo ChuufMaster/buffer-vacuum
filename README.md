@@ -1,11 +1,12 @@
 # 🧹 buffer-vacuum
 
-A neovim plugin to vacuum up unused file buffers
+A Neovim plugin to vacuum up unused file buffers
 
 ## ✨ Features
 
 - Delete your oldest unsaved/unpinned buffer
-- pin buffers to ignore them from the buffer count
+- Pin buffers to ignore them from the buffer count
+- Cross session vacuuming
 
 ## ⚡️ Requirements
 
@@ -69,3 +70,4 @@ Buffer-Vacuum comes with the following defaults:
 ## Plugins that work well with Buffer Vacuum
 
 - [Bufferline](https://github.com/akinsho/bufferline.nvim)
+- [Auto-session](https://github.com/rmagatti/auto-session?tab=readme-ov-file)
