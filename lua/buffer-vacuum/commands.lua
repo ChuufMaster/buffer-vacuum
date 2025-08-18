@@ -39,6 +39,14 @@ function M.load()
     vim.api.nvim_create_user_command("BufferVacuumDisable", function()
         util.disable_Buffer_Vacuum()
     end, {})
+
+    vim.api.nvim_create_user_command("BufferVacuumNext", function()
+        util.go_next_pinned_buffer()
+    end, {})
+
+    vim.api.nvim_create_user_command("BufferVacuumPrev", function()
+        util.go_prev_pinned_buffer()
+    end, {})
 end
 
 return M

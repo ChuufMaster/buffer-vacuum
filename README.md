@@ -67,6 +67,8 @@ Buffer-Vacuum comes with the following defaults:
 - **BufferVacuumToggle**: Toggle buffer-vacuum
 - **BufferVacuumEnable**: Enable buffer-vacuum
 - **BufferVacuumDisable**: Disable buffer-vacuum
+- **BufferVacuumNext**: Go to next pinned buffer
+- **BufferVacuumPrev**: Go to previous pinned buffer
 
 ## Session Persistence
 

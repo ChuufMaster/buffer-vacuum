@@ -102,4 +102,51 @@ function M.delete_oldest_buffer()
     end
 end
 
+local function pinned_buffers()
+    local pinned = {}
+    local listed_buffers = vim.fn.getbufinfo({ buflisted = 1 })
+    for _, buf in ipairs(listed_buffers) do
+        if is_pinned(buf) == 1 then
+            table.insert(pinned, buf.bufnr)
+        end
+    end
+    return pinned
+end
+
+local function get_pinned_buffer_idx(buffer_list)
+    if #buffer_list == 0 then
+        print("No pinned buffers found")
+        return nil
+    end
+
+    local current = vim.api.nvim_get_current_buf()
+    local idx
+    for i, b in ipairs(buffer_list) do
+        if b == current then
+            idx = i
+            break
+        end
+    end
+
+    return idx or 1
+end
+
+M.go_next_pinned_buffer = function()
+    local pinned = pinned_buffers()
+    local idx = get_pinned_buffer_idx(pinned)
+    if idx then
+        local new_idx = (idx % #pinned) + 1
+        vim.api.nvim_set_current_buf(pinned[new_idx])
+    end
+end
+
+M.go_prev_pinned_buffer = function()
+    local pinned = pinned_buffers()
+    local idx = get_pinned_buffer_idx(pinned)
+    if idx then
+        local new_idx = ((idx - 2) % #pinned) + 1
+        vim.api.nvim_set_current_buf(pinned[new_idx])
+    end
+end
+
 return M
